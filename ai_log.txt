@@ -1,0 +1,41 @@
+{
+  "id": "chatcmpl-8HvBiSNLU66xao8DyU0S5RWaWnkYg",
+  "object": "chat.completion",
+  "created": 1699282098,
+  "model": "gpt-3.5-turbo-0613",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[\n  {\n    \"name\": \"Prezenta\u010dn\u00ed dovednosti\",\n    \"type\": \"Skill\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Komunikace\",\n    \"type\": \"Skill\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Kou\u010dov\u00e1n\u00ed a mentorov\u00e1n\u00ed\",\n    \"type\": \"Skill\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"N\u011bm\u010dina\",\n    \"type\": \"Skill\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Workshopy\",\n    \"type\": \"Skill\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Lidsk\u00e9 zdroje (HR)\",\n    \"type\": \"Area of Expertise\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Rozvoj person\u00e1lu\",\n    \"type\": \"Area of Expertise\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Rozvoj pro organizace\",\n    \"type\": \"Area of Expertise\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Rozvoj kl\u00ed\u010dov\u00fdch z\u00e1kazn\u00edk\u016f\",\n    \"type\": \"Area of Expertise\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Rozvoj lidsk\u00fdch zdroj\u016f\",\n    \"type\": \"Area of Expertise\",\n    \"subskills\": [],\n    \"connected_to\": []\n  }\n]"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 406,
+    "completion_tokens": 384,
+    "total_tokens": 790
+  }
+}{
+  "id": "chatcmpl-8HvJqFYNfGr1pbBYaMIK9Avvc4o0D",
+  "object": "chat.completion",
+  "created": 1699282602,
+  "model": "gpt-3.5-turbo-0613",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[\n  {\n    \"name\": \"Prezenta\u010dn\u00ed dovednosti\",\n    \"type\": \"Skill\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Komunikace\",\n    \"type\": \"Skill\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Kou\u010dov\u00e1n\u00ed a mentorov\u00e1n\u00ed\",\n    \"type\": \"Skill\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"N\u011bm\u010dina\",\n    \"type\": \"Skill\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Workshopy\",\n    \"type\": \"Skill\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Lidsk\u00e9 zdroje (HR)\",\n    \"type\": \"Area of Expertise\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Rozvoj person\u00e1lu\",\n    \"type\": \"Area of Expertise\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Rozvoj pro organizace\",\n    \"type\": \"Area of Expertise\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Rozvoj kl\u00ed\u010dov\u00fdch z\u00e1kazn\u00edk\u016f\",\n    \"type\": \"Area of Expertise\",\n    \"subskills\": [],\n    \"connected_to\": []\n  },\n  {\n    \"name\": \"Rozvoj lidsk\u00fdch zdroj\u016f\",\n    \"type\": \"Area of Expertise\",\n    \"subskills\": [],\n    \"connected_to\": []\n  }\n]"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 406,
+    "completion_tokens": 384,
+    "total_tokens": 790
+  }
+}

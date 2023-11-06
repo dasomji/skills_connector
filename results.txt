@@ -1,0 +1,123 @@
+[
+  {
+    "name": "Prezentační dovednosti",
+    "type": "Skill",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Komunikace",
+    "type": "Skill",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Koučování a mentorování",
+    "type": "Skill",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Němčina",
+    "type": "Skill",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Workshopy",
+    "type": "Skill",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Lidské zdroje (HR)",
+    "type": "Area of Expertise",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Rozvoj personálu",
+    "type": "Area of Expertise",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Rozvoj pro organizace",
+    "type": "Area of Expertise",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Rozvoj klíčových zákazníků",
+    "type": "Area of Expertise",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Rozvoj lidských zdrojů",
+    "type": "Area of Expertise",
+    "subskills": [],
+    "connected_to": []
+  }
+][
+  {
+    "name": "Prezentační dovednosti",
+    "type": "Skill",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Komunikace",
+    "type": "Skill",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Koučování a mentorování",
+    "type": "Skill",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Němčina",
+    "type": "Skill",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Workshopy",
+    "type": "Skill",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Lidské zdroje (HR)",
+    "type": "Area of Expertise",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Rozvoj personálu",
+    "type": "Area of Expertise",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Rozvoj pro organizace",
+    "type": "Area of Expertise",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Rozvoj klíčových zákazníků",
+    "type": "Area of Expertise",
+    "subskills": [],
+    "connected_to": []
+  },
+  {
+    "name": "Rozvoj lidských zdrojů",
+    "type": "Area of Expertise",
+    "subskills": [],
+    "connected_to": []
+  }
+]
