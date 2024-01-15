@@ -12,6 +12,7 @@ import json
 from dotenv import load_dotenv
 import os
 from openai import OpenAI
+import datetime
 
 load_dotenv()
 
@@ -86,7 +87,13 @@ def log_it(response_from_ai):
 def save_generated_skills_to_json(response_from_ai):
     # fix: content_from_ai in log_it is same as content --> merge
     content = response_from_ai.choices[0].message.content
-    json_content = json.loads(content)
+    try:
+        json_content = json.loads(content)
+    except json.decoder.JSONDecodeError as e:
+        # decreases the skills_counter so that in the next run the set of skills is done again until a proper json is returned
+        print(f'There was an Error ({e}) at {datetime.datetime.now()}.')
+        update_counter(current_skills_counter, -10)
+        json_content = {}
 
     try:
         with open("data.json", 'r') as data_storage_file:
@@ -103,8 +110,11 @@ def save_generated_skills_to_json(response_from_ai):
     return json_content
 
 
-def update_counter(skills_counter):
-    skills_counter += 10
+def update_counter(skills_counter, update_number):
+    print(f'Update-number: {update_number}')
+    print(f'Skills_counter old:{skills_counter}')
+    skills_counter += update_number
+    print(f'Skills_counter new:{skills_counter}')
 
     with open("counter.json", "w") as counter_file:
         json.dump(skills_counter, counter_file)
@@ -114,18 +124,20 @@ def update_counter(skills_counter):
 
 number_of_skills = get_number_of_skills()
 
-skills_counter = get_skill_counter()
+current_skills_counter = get_skill_counter()
 
 if __name__ == "__main__":
-    while skills_counter <= number_of_skills:
-        ten_skills = get_skills_from_list(skills_counter)
+    while current_skills_counter <= number_of_skills:
+        ten_skills = get_skills_from_list(current_skills_counter)
+        print(current_skills_counter)
         print(ten_skills)
         print(f"OpenAI-key: {os.getenv('OPENAI_API_KEY')}")
         ai_response = call_ai(ten_skills)
-        print(ai_response)
+        # print(ai_response)
         ai_content = log_it(ai_response)
         print("----------------")
-        print(ai_content)
+        # print(ai_content)
         formatted_skills_output = save_generated_skills_to_json(ai_response)
-        skills_counter = update_counter(skills_counter)
+        current_skills_counter = get_skill_counter()
+        current_skills_counter = update_counter(current_skills_counter, 10)
         print("------End of call----------")
