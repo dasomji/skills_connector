@@ -11,9 +11,11 @@ For debugging:
 import json
 from dotenv import load_dotenv
 import os
-import openai
+from openai import OpenAI
 
 load_dotenv()
+
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 
 def get_skill_counter():
@@ -47,29 +49,35 @@ def get_skills_from_list(skills_counter):
 
 
 def call_ai(skills_input):
-    openai.api_key = os.getenv('OPENAI_API_KEY')
 
     with open("skill_prompt_v2.txt", "r") as prompt_file:
         prompt = prompt_file.read()
 
-    ai_response_object = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+    ai_response_object = client.chat.completions.create(
+        model="gpt-3.5-turbo-1106",
+        response_format={"type": "json_object"},
         messages=[
-            {
-                "role": "system",
-                "content": prompt
-            },
-            {
-                "role": "user",
-                "content": skills_input
-            }
-        ],
-        temperature=1,
-        max_tokens=1000,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0
+            {"role": "system", "content": prompt},
+            {"role": "user", "content": skills_input}
+        ]
     )
+
+    # ai_response_object = client.chat.completions.create(model="gpt-3.5-turbo",
+    #                                                     messages=[
+    #                                                         {
+    #                                                             "role": "system",
+    #                                                             "content": prompt
+    #                                                         },
+    #                                                         {
+    #                                                             "role": "user",
+    #                                                             "content": skills_input
+    #                                                         }
+    #                                                     ],
+    #                                                     temperature=1,
+    #                                                     max_tokens=1000,
+    #                                                     top_p=1,
+    #                                                     frequency_penalty=0,
+    #                                                     presence_penalty=0)
 
     return ai_response_object
 
@@ -77,7 +85,7 @@ def call_ai(skills_input):
 def log_it(response_from_ai):
     """Saving both the entire OpenAI API-response as well as the content in different txt-files.
     Encountered problems with json in the beginning, therefor the redundancy."""
-    content_from_ai = response_from_ai["choices"][0]["message"]["content"]
+    content_from_ai = response_from_ai.choices[0].message.content
     with open("ai_log.txt", "a") as ai_log_file:
         ai_log_file.write(str(response_from_ai))
 
@@ -88,7 +96,8 @@ def log_it(response_from_ai):
 
 
 def save_generated_skills_to_json(response_from_ai):
-    content = response_from_ai["choices"][0]["message"]["content"]
+    # fix: content_from_ai in log_it is same as content --> merge
+    content = response_from_ai.choices[0].message.content
     json_content = json.loads(content)
 
     try:
