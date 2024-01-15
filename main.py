@@ -49,6 +49,29 @@ def get_skills_from_list(skills_counter):
     return skills_string
 
 
+def translate_skills(skills_input):
+    with open("translate_prompt.txt", "r") as prompt_file:
+        prompt = prompt_file.read()
+
+    ai_response_object = client.chat.completions.create(
+        model="gpt-3.5-turbo-1106",
+        # response_format={"type": "json_object"},
+        messages=[
+            {"role": "system", "content": prompt},
+            {"role": "user", "content": skills_input}
+        ],
+        temperature=1,
+        max_tokens=2000,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
+    )
+
+    content = ai_response_object.choices[0].message.content
+    print(content)
+    return content
+
+
 def call_ai(skills_input):
     # don't use the response_format json_object. GPT then only returns one skill and not all ten.
     with open("skill_prompt_v2.txt", "r") as prompt_file:
@@ -68,6 +91,8 @@ def call_ai(skills_input):
         presence_penalty=0
     )
 
+    content = ai_response_object.choices[0].message.content
+    print(content)
     return ai_response_object
 
 
@@ -128,7 +153,8 @@ if __name__ == "__main__":
         print(current_skills_counter)
         print(ten_skills)
         print(f"OpenAI-key: {os.getenv('OPENAI_API_KEY')}")
-        ai_response = call_ai(ten_skills)
+        translated_skills = translate_skills(ten_skills)
+        ai_response = call_ai(translated_skills)
         ai_content = ai_response.choices[0].message.content
         # print(ai_response)
         log_it(ai_response, ai_content)

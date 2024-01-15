@@ -4,11 +4,10 @@ E.g. someone who has "Python" as a skill, could have "Debugging", "Analytical mi
 
 For each 'skill', you MUST:
 
-1. Check if the skill is in English. If not, translate it into English. If you can't translate it, skip this specific skill.
-2. Identify if it is a skill, software, area of expertise, or something else.
-3. You MUST list at least three potential subskills associated with it.
-4. You MUST suggest what areas of expertise or other skills it may be connected to.
-5. Format the response as a Python-dictionary that MUST look like this:
+1. Identify if it is a skill, software, area of expertise, or something else.
+2. You MUST list at least three potential subskills associated with it.
+3. You MUST suggest what areas of expertise or other skills it may be connected to.
+4. Format the response as a Python-dictionary that MUST look like this:
 
 {
     "name": "Skill Name",

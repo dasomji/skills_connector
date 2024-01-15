@@ -1,0 +1,1 @@
+Here's a list of skills. Please translate each skill to English if it isn't already English. Then return the list in English. Here's the list:
