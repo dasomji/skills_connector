@@ -67,23 +67,6 @@ def call_ai(skills_input):
         presence_penalty=0
     )
 
-    # ai_response_object = client.chat.completions.create(model="gpt-3.5-turbo",
-    #                                                     messages=[
-    #                                                         {
-    #                                                             "role": "system",
-    #                                                             "content": prompt
-    #                                                         },
-    #                                                         {
-    #                                                             "role": "user",
-    #                                                             "content": skills_input
-    #                                                         }
-    #                                                     ],
-    #                                                     temperature=1,
-    #                                                     max_tokens=1000,
-    #                                                     top_p=1,
-    #                                                     frequency_penalty=0,
-    #                                                     presence_penalty=0)
-
     return ai_response_object
 
 

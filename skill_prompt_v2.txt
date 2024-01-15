@@ -11,11 +11,11 @@ For each 'skill', you MUST:
 5. Format the response as a Python-dictionary that MUST look like this:
 
 {
-    'name': 'Skill Name',
-    'type': 'Skill/Software/Area of Expertise/Other',
-    'subskills': ['subskill1', 'subskill2', ...],
-    'connected_to': ['area1', 'skill2', ...]
-  }
+    "name": "Skill Name",
+    "type": "Skill/Software/Area of Expertise/Other",
+    "subskills": ["subskill1", "subskill2", ...],
+    "connected_to": ["area1", "skill2", ...]
+}
 
 I want you to output all of these dictionaries together in JSON.
 
@@ -23,16 +23,16 @@ Here's the exact JSON-format I expect:
 
 [
   {
-    'name': 'Skill One',
-    'type': 'Skill/Software/Area of Expertise/Other',
-    'subskills': ['subskill1', 'subskill2', ...],
-    'connected_to': ['area1', 'skill2', ...]
+    "name": "Skill Name One",
+    "type": "Skill/Software/Area of Expertise/Other",
+    "subskills": ["subskill1", "subskill2", ...],
+    "connected_to": ["area1", "skill2", ...]
   },
   {
-    'name': 'Skill Two',
-    'type': 'Skill/Software/Area of Expertise/Other',
-    'subskills': ['subskill1', 'subskill2', ...],
-    'connected_to': ['area1', 'skill2', ...]
+    "name": "Skill Name Two",
+    "type": "Skill/Software/Area of Expertise/Other",
+    "subskills": ["subskill1", "subskill2", ...],
+    "connected_to": ["area1", "skill2", ...]
   }
   ... // Follow this format for each skill
 ]
