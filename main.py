@@ -49,17 +49,22 @@ def get_skills_from_list(skills_counter):
 
 
 def call_ai(skills_input):
-
+    # don't use the response_format json_object. GPT then only returns one skill and not all ten.
     with open("skill_prompt_v2.txt", "r") as prompt_file:
         prompt = prompt_file.read()
 
     ai_response_object = client.chat.completions.create(
         model="gpt-3.5-turbo-1106",
-        response_format={"type": "json_object"},
+        # response_format={"type": "json_object"},
         messages=[
             {"role": "system", "content": prompt},
             {"role": "user", "content": skills_input}
-        ]
+        ],
+        temperature=1,
+        max_tokens=2000,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
     )
 
     # ai_response_object = client.chat.completions.create(model="gpt-3.5-turbo",
