@@ -1,3 +1,5 @@
 .env
 data.json
 counter.json
+results.txt
+ai_log.txt
