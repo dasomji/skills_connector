@@ -71,24 +71,20 @@ def call_ai(skills_input):
     return ai_response_object
 
 
-def log_it(response_from_ai):
+def log_it(response_from_ai, content_from_ai):
     """Saving both the entire OpenAI API-response as well as the content in different txt-files.
     Encountered problems with json in the beginning, therefor the redundancy."""
-    content_from_ai = response_from_ai.choices[0].message.content
+
     with open("ai_log.txt", "a") as ai_log_file:
         ai_log_file.write(str(response_from_ai))
 
     with open("results.txt", "a") as ai_log_file:
         ai_log_file.write(str(content_from_ai))
 
-    return content_from_ai
 
-
-def save_generated_skills_to_json(response_from_ai):
-    # fix: content_from_ai in log_it is same as content --> merge
-    content = response_from_ai.choices[0].message.content
+def save_generated_skills_to_json(content_from_ai):
     try:
-        json_content = json.loads(content)
+        json_content = json.loads(content_from_ai)
     except json.decoder.JSONDecodeError as e:
         # decreases the skills_counter so that in the next run the set of skills is done again until a proper json is returned
         print(f'There was an Error ({e}) at {datetime.datetime.now()}.')
@@ -133,11 +129,12 @@ if __name__ == "__main__":
         print(ten_skills)
         print(f"OpenAI-key: {os.getenv('OPENAI_API_KEY')}")
         ai_response = call_ai(ten_skills)
+        ai_content = ai_response.choices[0].message.content
         # print(ai_response)
-        ai_content = log_it(ai_response)
+        log_it(ai_response, ai_content)
         print("----------------")
         # print(ai_content)
-        formatted_skills_output = save_generated_skills_to_json(ai_response)
+        formatted_skills_output = save_generated_skills_to_json(ai_content)
         current_skills_counter = get_skill_counter()
         current_skills_counter = update_counter(current_skills_counter, 10)
         print("------End of call----------")
