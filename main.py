@@ -50,6 +50,8 @@ def get_skills_from_list(skills_counter):
 
 
 def translate_skills(skills_input):
+    """originally the translation was part of the create_skills-prompt, 
+    but GPT didn't always translate, so it was seperated"""
     with open("translate_prompt.txt", "r") as prompt_file:
         prompt = prompt_file.read()
 
@@ -67,9 +69,8 @@ def translate_skills(skills_input):
         presence_penalty=0
     )
 
-    content = ai_response_object.choices[0].message.content
-    print(content)
-    return content
+    translated_content = ai_response_object.choices[0].message.content
+    return translated_content
 
 
 def call_ai(skills_input):
@@ -91,9 +92,8 @@ def call_ai(skills_input):
         presence_penalty=0
     )
 
-    content = ai_response_object.choices[0].message.content
-    print(content)
-    return ai_response_object
+    ai_content_object = ai_response_object.choices[0].message.content
+    return ai_response_object, ai_content_object
 
 
 def log_it(response_from_ai, content_from_ai):
@@ -111,7 +111,8 @@ def save_generated_skills_to_json(content_from_ai):
     try:
         json_content = json.loads(content_from_ai)
     except json.decoder.JSONDecodeError as e:
-        # decreases the skills_counter so that in the next run the set of skills is done again until a proper json is returned
+        """decreases the skills_counter so that in the next run the set of skills is done again 
+        until a proper json is returned"""
         print(f'There was an Error ({e}) at {datetime.datetime.now()}.')
         update_counter(current_skills_counter, -10)
         json_content = {}
@@ -132,10 +133,7 @@ def save_generated_skills_to_json(content_from_ai):
 
 
 def update_counter(skills_counter, update_number):
-    print(f'Update-number: {update_number}')
-    print(f'Skills_counter old:{skills_counter}')
     skills_counter += update_number
-    print(f'Skills_counter new:{skills_counter}')
 
     with open("counter.json", "w") as counter_file:
         json.dump(skills_counter, counter_file)
@@ -143,23 +141,20 @@ def update_counter(skills_counter, update_number):
     return skills_counter
 
 
-number_of_skills = get_number_of_skills()
-
-current_skills_counter = get_skill_counter()
-
 if __name__ == "__main__":
+    number_of_skills = get_number_of_skills()
+    current_skills_counter = get_skill_counter()
     while current_skills_counter <= number_of_skills:
         ten_skills = get_skills_from_list(current_skills_counter)
         print(current_skills_counter)
         print(ten_skills)
-        print(f"OpenAI-key: {os.getenv('OPENAI_API_KEY')}")
+        # print(f"OpenAI-key: {os.getenv('OPENAI_API_KEY')}")
         translated_skills = translate_skills(ten_skills)
-        ai_response = call_ai(translated_skills)
-        ai_content = ai_response.choices[0].message.content
+        ai_response, ai_content = call_ai(translated_skills)
         # print(ai_response)
+        # print(ai_content)
         log_it(ai_response, ai_content)
         print("----------------")
-        # print(ai_content)
         formatted_skills_output = save_generated_skills_to_json(ai_content)
         current_skills_counter = get_skill_counter()
         current_skills_counter = update_counter(current_skills_counter, 10)
