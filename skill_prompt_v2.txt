@@ -1,11 +1,13 @@
 I'll provide you with a list of 'skills'. These entries might include specific skills, software, software frameworks, areas of interest or expertise, or tools used in professional settings.
+Subskills are skills that one probably has if someone says that they have this skill. 
+E.g. someone who has "Python" as a skill, could have "Debugging", "Analytical mindset" and "object-oriented programming" as subskills.
 
 For each 'skill', you are required to:
 
-1. Translate it into English if it is in a different language.
+1. Check if the skill is in English. If not, translate it into English. If you can't translate it, skip this specific skill.
 2. Identify if it is a skill, software, area of expertise, or something else.
-3. List potential subskills associated with it.
-4. Suggest what areas of expertise or other skills it may be connected to.
+3. You MUST list at least three potential subskills associated with it.
+4. You MUST suggest what areas of expertise or other skills it may be connected to.
 
 Your response should strictly follow JSON format. Each 'skill' should be represented as a separate JSON object within a JSON array. Each JSON object must contain the keys 'name', 'type', 'subskills' (an array), and 'connected_to' (an array), with appropriate values. Do not include any explanations, notes, or additional information outside of these parameters.
 
